@@ -52,10 +52,10 @@ defmodule Surface.LiveComponent do
 
   alias Surface.BaseComponent
 
-  defmacro __using__(_) do
+  defmacro __using__(opts) do
     quote do
       @before_compile Surface.Renderer
-      use Phoenix.LiveComponent
+      use Phoenix.LiveComponent, unquote(opts)
 
       use Surface.BaseComponent, type: unquote(__MODULE__)
 
